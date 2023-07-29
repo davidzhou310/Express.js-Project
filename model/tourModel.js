@@ -139,13 +139,7 @@ tourSchema.pre(/^find/, function(next){
 
 tourSchema.pre(/^find/, function(next){
     this.find({secretTour: {$ne: true }});
-
-    this.start = Date.now();
     next();
-});
-
-tourSchema.post(/^find/, function(doc){
-    console.log(`took ${Date.now() - this.start} milliseconds to execute`);
 });
 
 module.exports = mongoose.model("Tour", tourSchema);

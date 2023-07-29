@@ -12060,7 +12060,7 @@ var login = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "POST",
-            url: "http://127.0.0.1:3000/api/v1/users/login",
+            url: "/api/v1/users/login",
             data: {
               email: email,
               password: password
@@ -12101,7 +12101,7 @@ var logout = /*#__PURE__*/function () {
           _context2.next = 3;
           return (0, _axios.default)({
             method: "GET",
-            url: "http://127.0.0.1:3000/api/v1/users/logout"
+            url: "/api/v1/users/logout"
           });
         case 3:
           res = _context2.sent;
@@ -12151,15 +12151,14 @@ var updateSettings = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === "password" ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : "http://127.0.0.1:3000/api/v1/users/updateMe";
-          console.log(data);
-          _context.next = 5;
+          url = type === "password" ? '/api/v1/users/updateMyPassword' : "/api/v1/users/updateMe";
+          _context.next = 4;
           return (0, _axios.default)({
             method: "PATCH",
             url: url,
             data: data
           });
-        case 5:
+        case 4:
           res = _context.sent;
           if (res.data.status === "success") {
             (0, _alerts.showAlert)("success", "".concat(type, " updated successfully"));
@@ -12167,17 +12166,17 @@ var updateSettings = /*#__PURE__*/function () {
               location.reload(true);
             }, 5000);
           }
-          _context.next = 12;
+          _context.next = 11;
           break;
-        case 9:
-          _context.prev = 9;
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](0);
           (0, _alerts.showAlert)("error", _context.t0.response.data.message);
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
   return function updateSettings(_x, _x2) {
     return _ref.apply(this, arguments);
@@ -12435,7 +12434,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57923" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56341" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -1,5 +1,4 @@
 const express = require("express");
-const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -7,6 +6,7 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
@@ -28,11 +28,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //security http header
 app.use(helmet());
-
-//make request showing in the console much clearer
-if (process.env.NODE_ENV === "development"){
-    app.use(morgan("dev"));
-}
 
 //limit requests from same API
 const limiter = rateLimit({
@@ -63,6 +58,8 @@ app.use(hpp({
         "price"
     ]
 }));
+
+app.use(compression());
 
 //  ### mount routers ###
 

@@ -35,6 +35,7 @@ const sendErrDev = (req, res, err) => {
         });
     } else {
     // RENDERED WEBSITE
+        console.log(err);
         res.status(err.statusCode).render("error", {
             title: "Something Went Wrong",
             message: err.message
@@ -66,6 +67,7 @@ const sendErrProd = (req, res, err) => {
                 message: err.message
             });
         } else {
+            console.log(err);
             res.status(err.statusCode).render("error", {
                 title: "Something Went Wrong",
                 message: "Please try again later"
